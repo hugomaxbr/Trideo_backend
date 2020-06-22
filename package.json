@@ -1,0 +1,14 @@
+{
+  "name": "Trideosec",
+  "version": "1.0.0",
+  "main": "./src/index.js",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.17.1",
+    "expresss": "^0.0.0",
+    "nodemon": "^2.0.4"
+  },
+  "scripts": {
+    "start": "nodemon"
+  }
+}
