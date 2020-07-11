@@ -1,6 +1,7 @@
 const express = require("express");
 const route = express.Router();
 const knex = require("./database/database");
+const accountController = require("./controllers/accountController");
 
 route.get("/", (req, res) => {
   res.send("hello World!");
@@ -16,16 +17,7 @@ route.post("/signup", (request, response) => {
   response.json(form);
 });
 
-route.post("/database", async (req, res) => {
-  try {
-    const account = await knex("ACCOUNTS").insert(req.body, "*");
-    res.json(account);
-  } catch (err) {
-    res.status(400).json({
-      error: "Deu bosta jão",
-    });
-  }
-});
+route.post("/database", accountController.store);
 
 route.get("/database", async (req, res) => {
   const account = await knex("ACCOUNTS").select("*");
