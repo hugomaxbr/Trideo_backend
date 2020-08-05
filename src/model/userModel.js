@@ -45,6 +45,22 @@ class Account {
     if (this.body.password.length < 6 || this.body.password.length > 16)
       throw new ValidationError("Senha inválida");
   }
+
+  async login() {
+    this.body = {
+      email: this.body.email,
+      password: this.body.password,
+    };
+
+    try {
+      const account = await database("ACCOUNTS").where({
+        EMAIL: this.body.email,
+      });
+      return account;
+    } catch (error) {
+      throw Error(error.message);
+    }
+  }
 }
 
 module.exports = Account;
