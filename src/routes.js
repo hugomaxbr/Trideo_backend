@@ -19,9 +19,8 @@ route.post("/signup", (request, response) => {
 
 route.post("/database", accountController.store);
 
-route.get("/database", async (req, res) => {
-  const account = await knex("ACCOUNTS").select("*");
-  res.json(account);
-});
+route.get("/database", accountController.showAllaccounts);
+
+route.post("/login", accountController.logIn);
 
 module.exports = route;
