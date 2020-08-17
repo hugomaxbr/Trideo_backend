@@ -27,7 +27,6 @@ exports.logIn = async (req, res, next) => {
     const accountValid = await account.login();
     res.send({ accountValid });
   } catch (err) {
-    console.log(err);
-    res.status(400).json("Deu ruim");
+    res.status(400).json(err.message);
   }
 };
