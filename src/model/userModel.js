@@ -54,11 +54,16 @@ class Account {
 
     try {
       const account = await database("ACCOUNTS").where({
-        EMAIL: this.body.email,
+        EMAIL: this.body.email, PASSWORD: this.body.password
       });
-      return account;
-    } catch (error) {
-      throw Error(error.message);
+      if (Object.keys(account).length != 0) {
+        return account
+      }
+      else {
+        throw new ValidationError
+      }
+    } catch (err) {
+      throw new ValidationError("Credenciais inválidas.");
     }
   }
 }
