@@ -1,14 +1,15 @@
 require("dotenv").config();
 
 module.exports = {
-  dev: {
+  development: {
     client: "pg",
     version: "12",
     connection: {
       host: process.env.DBHOST,
       user: process.env.DBUSER,
       password: process.env.DBPASSWORD,
-      database: "Trideosec",
+      port: process.env.DBPORT,
+      database: "trideosec",
     },
     migrations: {
       directory: "./src/database/migrations",
