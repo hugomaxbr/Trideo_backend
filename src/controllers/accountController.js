@@ -1,10 +1,13 @@
 const Account = require("../model/userModel");
 const database = require("../database/database");
+const createUser = require("../services/createUser");
+const validatedUser = require("../validators/validateUser");
 
 exports.store = async (req, res, next) => {
   const user = new Account(req.body);
+  validatedUser(user);
   try {
-    const accountCreated = await user.registrar();
+    const accountCreated = await createUser(user);
 
     return res
       .status(201)
