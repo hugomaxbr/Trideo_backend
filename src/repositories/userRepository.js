@@ -4,13 +4,23 @@ const database = require("../database/database");
 
 // Função para criar usuário
 
-module.exports = function create (validatedUser) {
-     database("ACCOUNTS").insert(
+function create (user) {
+     return database("ACCOUNTS").insert(
         {
-          NOME: this.validatedUser.name,
-          EMAIL: this.validatedUseremail,
-          PASSWORD: this.validatedUser.password,
+          NOME: this.user.name,
+          EMAIL: this.user.email,
+          PASSWORD: this.user.password,
         },
         ["*"]
       )
 }
+
+function findUserbyEmail(user) {
+  return database("ACCOUNTS").where({
+    EMAIL: this.user.email
+  });
+  
+
+}
+
+module.exports = create, findUserbyEmail;
