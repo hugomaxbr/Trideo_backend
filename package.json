@@ -11,7 +11,7 @@
     "knex": "^0.21.12",
     "nodemon": "^2.0.4",
     "pg": "^8.2.1",
-    "validator": "^13.1.1"
+    "validator": "^13.7.0"
   },
   "scripts": {
     "start": "nodemon",
